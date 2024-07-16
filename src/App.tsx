@@ -1,30 +1,14 @@
 import './App.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+const ChartContainer = styled.div`
+  width: 1500px;
+  height: 1080px;
 `;
 
 const Header = styled.header`
   font-size: 2rem;
   margin-bottom: 20px;
-`;
-
-const MapWrapper = styled.div`
-  width: 800px;
-  height: 500px;
-`;
-
-const ChartContainer = styled.div`
-  width: 800px;
-  height: 500px;
-  margin: 20px 0;
 `;
 
 const data = [
@@ -39,22 +23,8 @@ const data = [
 
 function App() {
   return (
-      <Container>
-        <Header>Dashboard with Map and Line Widget</Header>
-        <MapWrapper>
-          <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <Marker position={[51.505, -0.09]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          </MapContainer>
-        </MapWrapper>
         <ChartContainer>
+          <Header>Dashboard with Line Widget</Header>
           <ResponsiveContainer>
             <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -67,7 +37,6 @@ function App() {
             </LineChart>
           </ResponsiveContainer>
         </ChartContainer>
-      </Container>
   )
 }
 
